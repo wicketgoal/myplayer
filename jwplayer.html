@@ -1,0 +1,91 @@
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/oziltv/dondoo@main/master/shaka.css"
+    />
+    <style>
+      #video {
+        width: 100%;
+        height: 310px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      data-shaka-player-container=""
+      style="max-width: 100%;"
+      data-shaka-player-cast-receiver-id="8D8C71A7"
+      shaka-controls="true"
+      class="shaka-video-container shaka-mobile"
+    >
+      <video
+        autoplay="true"
+        data-shaka-player=""
+        id="video"
+        poster="https://resources.pulse.icc-cricket.com/ICC/photo/2023/04/02/57453dd9-5caf-43de-9cd8-0f8ab5b27cf3/india-2023-logo.PNG"
+        class="shaka-video"
+        src="blob:https://nzeesportsin.blogspot.com/3edbbaaf-f0c0-46a0-bf21-9c68d8f33794"
+        style="width: 100%; height: 100%;"
+      >
+        <source src="blob:https://nzeesports.sportylive97.repl.co/e56c1958-a0fa-46cf-924a-cd028365d962" />
+      </video>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/oziltv/dondoo@main/master/shaka-player.ui.js"></script>
+    <script>
+      const manifestUri =
+        'https://linear003-gb-dash1-prd-cf.cdn.skycdp.com/016a/Content/DASH_003_sd/Live/channel(skysportscricket)/manifest_sd.mpd';
+
+      async function init() {
+        const video = document.getElementById('video');
+        const ui = video['ui'];
+        const controls = ui.getControls();
+        const player = controls.getPlayer();
+        const config = {
+          controlPanelElements: ['spacer', 'play_pause', 'mute', 'volume', 'quality', 'fullscreen', 'overflow_menu', 'airplay', 'cast'],
+        };
+        ui.configure(config);
+
+        player.configure({
+          drm: {
+            clearKeys: {
+              // 'key-id-in-hex': 'key-in-hex',
+              '0003f2a72d21efd159d45a3a74decd84': 'df0ec40586d641f3d4728ab5fd62adc3',
+            },
+          },
+        });
+
+        window.player = player;
+        window.ui = ui;
+
+        player.addEventListener('error', onPlayerErrorEvent);
+        controls.addEventListener('error', onUIErrorEvent);
+
+        try {
+          await player.load(manifestUri);
+
+          console.log('The video has now been loaded!');
+        } catch (error) {
+          onPlayerError(error);
+        }
+      }
+
+      function onPlayerErrorEvent(errorEvent) {
+        onPlayerError(event.detail);
+      }
+
+      function onPlayerError(error) {
+        console.error('Error code', error.code, 'object', error);
+      }
+
+      function onUIErrorEvent(errorEvent) {
+        onPlayerError(event.detail);
+      }
+
+      function initFailed(errorEvent) {
+        console.error('Unable to load the UI library!');
+      }
+
+      document.addEventListener('shaka-ui-loaded', init);
+      document.addEventListener('shaka-ui-load-failed', initFailed);
+    </script>
