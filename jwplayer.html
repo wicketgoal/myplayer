@@ -1,91 +1,135 @@
+<link href='https://raw.githubusercontent.com/yosintv/yosintv/main/football/favicon-32x32.png' rel='icon' type='image/x-icon'/>
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/oziltv/dondoo@main/master/shaka.css"
-    />
-    <style>
-      #video {
-        width: 100%;
-        height: 310px;
-      }
-    </style>
-  </head>
-  <body>
-    <div
-      data-shaka-player-container=""
-      style="max-width: 100%;"
-      data-shaka-player-cast-receiver-id="8D8C71A7"
-      shaka-controls="true"
-      class="shaka-video-container shaka-mobile"
-    >
-      <video
-        autoplay="true"
-        data-shaka-player=""
-        id="video"
-        poster="https://resources.pulse.icc-cricket.com/ICC/photo/2023/04/02/57453dd9-5caf-43de-9cd8-0f8ab5b27cf3/india-2023-logo.PNG"
-        class="shaka-video"
-        src="blob:https://nzeesportsin.blogspot.com/3edbbaaf-f0c0-46a0-bf21-9c68d8f33794"
-        style="width: 100%; height: 100%;"
-      >
-        <source src="blob:https://nzeesports.sportylive97.repl.co/e56c1958-a0fa-46cf-924a-cd028365d962" />
-      </video>
-    </div>
-    <script src="https://cdn.jsdelivr.net/gh/oziltv/dondoo@main/master/shaka-player.ui.js"></script>
-    <script>
-      const manifestUri =
-        'https://linear003-gb-dash1-prd-cf.cdn.skycdp.com/016a/Content/DASH_003_sd/Live/channel(skysportscricket)/manifest_sd.mpd';
+ <!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4843304,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4843304&101" alt="counter create hit" border="0"></a></noscript>
+<!-- Histats.com  END  -->
 
-      async function init() {
-        const video = document.getElementById('video');
-        const ui = video['ui'];
-        const controls = ui.getControls();
-        const player = controls.getPlayer();
-        const config = {
-          controlPanelElements: ['spacer', 'play_pause', 'mute', 'volume', 'quality', 'fullscreen', 'overflow_menu', 'airplay', 'cast'],
-        };
-        ui.configure(config);
 
-        player.configure({
-          drm: {
-            clearKeys: {
-              // 'key-id-in-hex': 'key-in-hex',
-              '0003f2a72d21efd159d45a3a74decd84': 'df0ec40586d641f3d4728ab5fd62adc3',
-            },
-          },
-        });
-
-        window.player = player;
-        window.ui = ui;
-
-        player.addEventListener('error', onPlayerErrorEvent);
-        controls.addEventListener('error', onUIErrorEvent);
-
-        try {
-          await player.load(manifestUri);
-
-          console.log('The video has now been loaded!');
-        } catch (error) {
-          onPlayerError(error);
-        }
-      }
-
-      function onPlayerErrorEvent(errorEvent) {
-        onPlayerError(event.detail);
-      }
-
-      function onPlayerError(error) {
-        console.error('Error code', error.code, 'object', error);
-      }
-
-      function onUIErrorEvent(errorEvent) {
-        onPlayerError(event.detail);
-      }
-
-      function initFailed(errorEvent) {
-        console.error('Unable to load the UI library!');
-      }
-
-      document.addEventListener('shaka-ui-loaded', init);
-      document.addEventListener('shaka-ui-load-failed', initFailed);
+<!--Don't Copy this Please-->
+<script>
+    function getParam ( sname )
+    {
+      var params = location.search.substr(location.search.indexOf("?")+1);
+      var sval =  params.replace("url=", "");
+      
+      return sval;
+    }
+    var sv = getParam("sv");
     </script>
+    <title>YoSinTV JW Player</title>
+    <meta name="referrer" content="no-referrer">
+    <script src="https://yosintv.github.io/yosintv/jwplayer.js"></script>
+    <body onload="init()">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>$(document).ready(function() {
+      $("img").on("contextmenu",function(){
+         return false;
+      }); 
+  }); </script>
+
+
+        
+ <iframe id="iframe" allowfullscreen="allowfullscreen" allowtransparency="true" frameborder="5" height="100%" marginheight="0" marginwidth="0" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" src width="100%"></iframe> 
+
+        
+<div id="jwPlayer"></div>
+<div id="jwplayers"></div>
+<script>
+    // Get the `src` parameter from the URL.
+    const urlParams = new URLSearchParams(window.location.search);
+    const srcParam = urlParams.get('src');
+    const videoUrl = urlParams.get('url');
+    
+    if (srcParam) {
+      // Show the iframe player
+      document.getElementById('iframe').src = srcParam;
+      document.getElementById('jwPlayer').style.display = 'none';
+    } else if (videoUrl) {
+      // Show the JW Player
+      jwplayer("jwPlayer").setup({
+        file: videoUrl,
+      });
+      document.getElementById('iframe').style.display = 'none';
+    }
+  </script> 
+    
+    </div>
+<!-- <div id="text"> www.yosin-tv.net </div> -->
+
+
+
+        
+    <style>
+        #container {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          background: #8a0000;
+          color: #fff;
+          overflow: hidden;
+        }
+        #iframe, #jwPlayer {
+          height: 100vh !important;
+          padding: 0;
+          margin: 0;
+        }
+        body {
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+        }
+        #container {
+          position: absolute;
+          text-align: center;
+        }
+        video {
+          outline: 0;
+        }
+        #text {
+          position: fixed;
+          border: 0;
+          left: 0;
+          width: 100%;
+          color: #fff;
+          bottom: 50px;
+          text-align: center;
+          font-family: tahoma;
+          font-size: 20px;
+          z-index: 9999;
+        }
+      </style>
+    </div>
+
+        
+
+    <style>
+        .video-js {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            text-align: center;
+            margin: 0px;
+        }
+        #videojs {
+            width: 100%;
+            height: 100%;
+        }.streaming-dimensions{
+                    width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+
+
+    </body>
+</html>
